@@ -23,7 +23,7 @@ const AboutMe = ({person, logo, logoChanger}) =>{
 
     return(
         <Wrapper>
-            <img src={img} />
+            <img src={img} alt="My picture" />
             <h2>{name} {surname}</h2>
             <p>{detail}</p>
             <div>

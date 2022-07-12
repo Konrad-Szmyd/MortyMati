@@ -24,7 +24,6 @@ const Wraper = styled.div`
 const ToDo = ({logoChanger,logo}) =>{
     const [value,setValue] = useState([])
     const [task,setTask] = useState([])
-    let counter = 1
 
     const loadValue = (e) =>{
         setValue(e.target.value)
@@ -35,21 +34,20 @@ const ToDo = ({logoChanger,logo}) =>{
     }
 
     const deleteItem = (e) =>{
-        const newList = task.filter((el)=>{
-            return(el != e.target.innerText)
-        })
-        setTask(newList)
+        const array = [...task]
+        const index = array.indexOf(e.target.innerText)
+        if (index !== -1) {
+          array.splice(index, 1);
+          setTask(array);
+        }
     }
 
-    const fullList = task.map((el)=>{
+    const fullList = task.map((el,index)=>{
         return(
-            <p key={el} onClick={deleteItem}>{el}</p>
+            <p key={index} onClick={deleteItem}>{el}</p>
         )
     })
 
-    // const changeLogo = () =>{
-    //     logo == 'LOGO' ? logoChanger('New logo') : logoChanger('LOGO')
-    // }
 
     return(
         <Wraper>

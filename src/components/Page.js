@@ -5,6 +5,18 @@ import CharacterList from "./CharacterList";
 import ImgSrc from "../assets/img/Panda.jpg";
 import ToDo from "./ToDo";
 import Contact from "./Contatc";
+
+const PERSON = {
+    name:'Konrad',
+    surname:'Szmyd',
+    img: ImgSrc,
+    detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+}
+
+const BUTTONS_NAME = ['O mnie','Lista postaci', 'ToDo','Kontakt']
+
+
+
 const WrapperApp = styled.div`
     display: flex;
     width:90%;
@@ -60,30 +72,39 @@ const Menu = ({logo,logoChanger}) =>{
         setPage(e.target.innerText)
     }
 
-    const person = {
-        name:'Konrad',
-        surname:'Szmyd',
-        img: ImgSrc,
-        detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-    }
+    const BUTTONS_ITEM = BUTTONS_NAME.map((el,index)=>{
+        return(
+            <Item key={index} onClick={changePage}>{el}</Item>
+        )
+    })
 
+    const pageSetter = () => {
+    switch(page){
+        case 'O mnie' :
+            return(<AboutMe person = {PERSON} logoChanger={logoChanger} logo={logo}/>)
+            break;
+        case 'Lista postaci':
+            return(<CharacterList/>)
+            break;
+        case 'ToDo':
+            return(<ToDo logoChanger={logoChanger} logo={logo}/>)
+            break;
+        case 'Kontakt':
+            return(<Contact/>)
+            break;
+    }
+}
 
     return(
         <WrapperApp>
             <WrapperMenu>
                 <Logo>{logo}</Logo>
                 <Links>
-                    <Item onClick={changePage}>O mnie</Item>
-                    <Item onClick={changePage}>Lista postaci</Item>
-                    <Item onClick={changePage}>ToDo</Item>
-                    <Item onClick={changePage}>Kontakt</Item>
+                {BUTTONS_ITEM}
                 </Links>
             </WrapperMenu>
             <WrapperPage>
-                {page == 'O mnie' && <AboutMe person = {person} logoChanger={logoChanger} logo={logo}/>}
-                {page == 'Lista postaci' && <CharacterList/>}
-                {page == 'ToDo' && <ToDo logoChanger={logoChanger} logo={logo}/>}
-                {page == 'Kontakt' && <Contact/>}
+                {pageSetter()}
             </WrapperPage>
         </WrapperApp>
         

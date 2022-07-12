@@ -3,7 +3,7 @@ import React from "react";
 const ChangeLogo = ({logoChanger,logo}) => {
 
     const changeLogo = () =>{
-        logo == 'LOGO' ? logoChanger('New logo') : logoChanger('LOGO')
+        logoChanger(logo === 'LOGO' ? 'New logo' : "LOGO")
     }
 
     return (<div>
