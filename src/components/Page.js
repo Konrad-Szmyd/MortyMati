@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import AboutMe from "./AboutMe";
 import CharacterList from "./CharacterList";
@@ -82,16 +82,14 @@ const Menu = ({logo,logoChanger}) =>{
     switch(page){
         case 'O mnie' :
             return(<AboutMe person = {PERSON} logoChanger={logoChanger} logo={logo}/>)
-            break;
         case 'Lista postaci':
             return(<CharacterList/>)
-            break;
         case 'ToDo':
             return(<ToDo logoChanger={logoChanger} logo={logo}/>)
-            break;
         case 'Kontakt':
             return(<Contact/>)
-            break;
+        default :
+            return(<AboutMe person = {PERSON} logoChanger={logoChanger} logo={logo}/>)
     }
 }
 

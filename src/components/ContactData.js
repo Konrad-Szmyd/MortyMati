@@ -1,4 +1,3 @@
-import React from "react";
 
 const ContactData = ({state}) => {
     const {email,text} = state

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from 'react';
 import './App.css';
 import Page from "./components/Page";
 import styled from "styled-components";
