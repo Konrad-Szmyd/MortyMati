@@ -5,6 +5,9 @@ import CharacterList from "./CharacterList";
 import ImgSrc from "../assets/img/Panda.jpg";
 import ToDo from "./ToDo";
 import Contact from "./Contatc";
+import Dialog from "./Dialog";
+import Component from "./Component";
+import Footer from "./Footer";
 
 const PERSON = {
     name:'Konrad',
@@ -13,7 +16,7 @@ const PERSON = {
     detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
 }
 
-const BUTTONS_NAME = ['O mnie','Lista postaci', 'ToDo','Kontakt']
+const BUTTONS_NAME = ['O mnie','Lista postaci', 'ToDo','Kontakt','Dialog','Components']
 
 
 
@@ -88,6 +91,10 @@ const Menu = ({logo,logoChanger}) =>{
             return(<ToDo logoChanger={logoChanger} logo={logo}/>)
         case 'Kontakt':
             return(<Contact/>)
+        case 'Dialog':
+            return(<Dialog/>)
+        case 'Components':
+            return(<Component/>)
         default :
             return(<AboutMe person = {PERSON} logoChanger={logoChanger} logo={logo}/>)
     }
@@ -104,6 +111,7 @@ const Menu = ({logo,logoChanger}) =>{
             <WrapperPage>
                 {pageSetter()}
             </WrapperPage>
+            <Footer />
         </WrapperApp>
         
     )
