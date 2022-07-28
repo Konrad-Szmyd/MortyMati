@@ -14,7 +14,9 @@ export default function SwitchLabels() {
 
   return (
     <FormGroup>
-      <FormControlLabel control={<Switch defaultChecked onChange={switchHandler} />} label={light}   />
+      <FormControlLabel control={<Switch defaultChecked onChange={switchHandler} sx={{'& .MuiSwitch-switchBase': {
+        color: 'red',
+      },}}/>} label={light}   />
     </FormGroup>
   );
 }
